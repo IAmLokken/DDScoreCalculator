@@ -73,7 +73,7 @@ input{
 h1, h2 {
     text-align: center;
 }
-.ScoreLabel{
+.ScoreLabel, label{
     color: rgb(247, 160, 0)
 }
 
