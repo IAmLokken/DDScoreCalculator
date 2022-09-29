@@ -1,0 +1,223 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Deep Dungeon Score Calculator</title>
+        <link rel="stylesheet" href="css/display.css?v=Deathgaze-1.0.0" />
+        <script src="lib/main.js?v=Deathgaze-1.0.0"></script>
+        <script src="lib/calculator.js?v=Deathgaze-1.0.0"></script>        
+
+        <script>
+            window.addEventListener("load", (e) => {
+                SC.PopulateDungeonDropdown();
+                SC.HideAll();
+                SC.ClearSaves();
+            });
+        </script>
+
+    </head>
+
+    <body>
+        <header>
+            <h1>Deep Dungeon Score Calculator</h1>
+        </header>
+
+        <div id="frame">
+            <div class="center">
+                <select name="DeepDungeon" id="DeepDungeon" class="dropdown" onchange="SC.DungeonSelected(this.selectedIndex, this.value)">
+                    <option selected disabled hidden>Select Deep Dungeon</option>
+                </select>
+            </div>
+            <div class="center">
+                <select name="FloorSelection" id="FloorSelection" class="dropdown" onchange="SC.FloorSelected(this.selectedIndex, this.value)">
+                    <option selected disabled hidden>Select Floor Range</option>
+                </select>
+            </div>
+            <hr width="30%" id="maindivider">
+
+            <div id="hoh30">
+                <header>
+                    <h1 id="hohheader">Heaven-on-High Floors 1-30</h1>
+                    <hr width="25%">
+                </header>
+                <div class="center">
+                    <div class="StatInput">
+                        <label for="hoh30kills"><br>Kills</label>
+                        <input type="number" id="hoh30kills" name="hoh30kills" step="1" min="0" value="0" onchange="SC.Update('pre|killCount|hoh100kills', this.value)">
+                    </div>
+                    <div class="StatInput">
+                        <label for="hoh30mimics">Mimics &<br>Korrigans</label>
+                        <input type="number" id="hoh30mimics" name="hoh30mimics" step="1" min="0" value="0" onchange="SC.Update('pre|mimicCount|hoh100mimics', this.value)">
+                    </div>
+                    <div class="StatInput hidehoh">
+                        <label for="hoh30traps"><br>Traps</label>
+                        <input type="number" id="hoh30traps" name="hoh30traps" step="1" min="0" value="0" onchange="SC.Update('pre|currentTrapsTriggered|hoh100traps', this.value)">
+                    </div>
+                    <div class="StatInput hidehoh">
+                        <label for="hoh30chests"><br>Chests</label>
+                        <input type="number" id="hoh30chests" name="hoh30chests" step="1" min="0" value="0" onchange="SC.Update('pre|currentChestCount|hoh100chests', this.value)">
+                    </div>
+                    <div class="StatInput hidehoh">
+                        <label for="hoh30enchant"><br>Enchantments</label>
+                        <input type="number" id="hoh30enchant" name="hoh30enchant" step="1" min="0" value="0" onchange="SC.Update('pre|currentEnchantmentCount|hoh100enchant', this.value)">
+                    </div>
+                    <div class="StatInput hidehoh">
+                        <label for="hoh30speed"><br>Speed Runs</label>
+                        <input type="number" id="hoh30speed" name="hoh30speed" step="1" min="0" max="3" value="0" onchange="SC.Update('pre|currentSpeedRunBonusCount|hoh100speed', this.value)">
+                    </div>
+                    <div class="StatInput hidehoh">
+                        <label for="hoh30deaths"><br>Deaths</label>
+                        <input type="number" id="hoh30deaths" name="hoh30deaths" step="1" min="0" value="0" onchange="SC.Update('pre|currentRezCount|hoh100deaths', this.value)">
+                    </div>
+                </div>
+                <header class="hidehoh">
+                    <hr width="25%">
+                    <h2 class="ScoreLabel">Score:</h2>
+                    <h2 id="hoh30score">9,999,999</h2>
+                </header>
+            </div>
+
+            <div id="hoh100">
+                <header>
+                    <h1>Heaven-on-High Floors 31-100</h1>
+                    <hr width="25%">
+                </header>
+                <div class="center">
+                    <div class="StatInput">
+                        <label for="hoh100kills"><br>Kills</label>
+                        <input type="number" id="hoh100kills" name="hoh100kills" step="1" min="0" value="0" onchange="SC.Update('post|killCount|hoh30kills', this.value)">
+                    </div>
+                    <div class="StatInput">
+                        <label for="hoh100mimics">Mimics &<br>Korrigans</label>
+                        <input type="number" id="hoh100mimics" name="hoh100mimics" step="1" min="0" value="0" onchange="SC.Update('post|mimicCount|hoh30mimics', this.value)">
+                    </div>
+                    <div class="StatInput">
+                        <label for="hoh100traps"><br>Traps</label>
+                        <input type="number" id="hoh100traps" name="hoh100traps" step="1" min="0" value="0" onchange="SC.Update('post|currentTrapsTriggered|hoh30traps', this.value)">
+                    </div>
+                    <div class="StatInput">
+                        <label for="hoh100chests"><br>Chests</label>
+                        <input type="number" id="hoh100chests" name="hoh100chests" step="1" min="0" value="0" onchange="SC.Update('post|currentChestCount|hoh30chests', this.value)">
+                    </div>
+                    <div class="StatInput">
+                        <label for="hoh100enchant"><br>Enchantments</label>
+                        <input type="number" id="hoh100enchant" name="hoh100enchant" step="1" min="0" value="0" onchange="SC.Update('post|currentEnchantmentCount|hoh30enchant', this.value)">
+                    </div>
+                    <div class="StatInput">
+                        <label for="hoh100speed"><br>Speed Runs</label>
+                        <input type="number" id="hoh100speed" name="hoh100speed" step="1" min="0" max="3" value="0" onchange="SC.Update('post|currentSpeedRunBonusCount|hoh30speed', this.value)">
+                    </div>
+                    <div class="StatInput">
+                        <label for="hoh100deaths"><br>Deaths</label>
+                        <input type="number" id="hoh100deaths" name="hoh100deaths" step="1" min="0" value="0" onchange="SC.Update('post|currentRezCount|hoh30deaths', this.value)">
+                    </div>
+                </div>
+                <header>
+                    <hr width="25%">
+                    <h2 class="ScoreLabel">Score:</h2>
+                    <h2 id="hoh100score">9,999,999</h2>
+                </header>
+            </div>
+            
+            <div id="potd100">
+                <header>
+                    <h1 id="potdheader">The Palace of the Dead Floors 1-100</h1>
+                    <hr width="25%">
+                </header>
+                <div class="center">
+                    <div class="StatInput">
+                        <label for="potd100kills"><br>Kills</label>
+                        <input type="number" id="potd100kills" name="potd100kills" step="1" min="0" value="0" onchange="SC.Update('pre|killCount|potd200kills', this.value)">
+                    </div>
+                    <div class="StatInput">
+                        <label for="potd100mimics">Mimics &<br>Korrigans</label>
+                        <input type="number" id="potd100mimics" name="potd100mimics" step="1" min="0" value="0" onchange="SC.Update('pre|mimicCount|potd200mimics', this.value)">
+                    </div>
+                    <div class="StatInput">
+                        <label for="potd100rare"><br>Rare Spawns</label>
+                        <input type="number" id="potd100rare" name="potd100rare" step="1" min="0" value="0" onchange="SC.Update('pre|currentSpecialKillCount|potd200rare', this.value)">
+                    </div>
+                    <div class="StatInput hidepotd">
+                        <label for="potd100traps"><br>Traps</label>
+                        <input type="number" id="potd100traps" name="potd100traps" step="1" min="0" value="0" onchange="SC.Update('pre|currentTrapsTriggered|potd200traps', this.value)">
+                    </div>
+                    <div class="StatInput hidepotd">
+                        <label for="potd100chests"><br>Chests</label>
+                        <input type="number" id="potd100chests" name="potd100chests" step="1" min="0" value="0" onchange="SC.Update('pre|currentChestCount|potd200chests', this.value)">
+                    </div>
+                    <div class="StatInput hidepotd">
+                        <label for="potd100enchant"><br>Enchantments</label>
+                        <input type="number" id="potd100enchant" name="potd100enchant" step="1" min="0" value="0" onchange="SC.Update('pre|currentEnchantmentCount|potd200enchant', this.value)">
+                    </div>
+                    <div class="StatInput hidepotd">
+                        <label for="potd100speed"><br>Speed Runs</label>
+                        <input type="number" id="potd100speed" name="potd100speed" step="1" min="0" max="10" value="0" onchange="SC.Update('pre|currentSpeedRunBonusCount|potd200speed', this.value)">
+                    </div>
+                    <div class="StatInput hidepotd">
+                        <label for="potd100deaths"><br>Deaths</label>
+                        <input type="number" id="potd100deaths" name="potd100deaths" step="1" min="0" value="0" onchange="SC.Update('pre|currentRezCount|potd200deaths', this.value)">
+                    </div>
+                </div>
+                <header class="hidepotd">
+                    <hr width="25%">
+                    <h2 class="ScoreLabel">Score:</h2>
+                    <h2 id="potd100score">9,999,999</h2>
+                </header>
+            </div>
+
+            <div id="potd200">
+                <header>
+                    <h1>Palace of the Dead Floors 101-200</h1>
+                    <hr width="25%">
+                </header>
+                <div class="center">
+                    <div class="StatInput">
+                        <label for="potd200kills"><br>Kills</label>
+                        <input type="number" id="potd200kills" name="potd200kills" step="1" min="0" value="0" onchange="SC.Update('post|killCount|potd100kills', this.value)">
+                    </div>
+                    <div class="StatInput">
+                        <label for="potd200mimics">Mimics &<br>Korrigans</label>
+                        <input type="number" id="potd200mimics" name="potd200mimics" step="1" min="0" value="0" onchange="SC.Update('post|mimicCount|potd100mimics', this.value)">
+                    </div>
+                    <div class="StatInput">
+                        <label for="potd200rare"><br>Rare Spawns</label>
+                        <input type="number" id="potd200rare" name="potd200rare" step="1" min="0" value="0" onchange="SC.Update('post|currentSpecialKillCount|potd100rare', this.value)">
+                    </div>
+                    <div class="StatInput">
+                        <label for="potd200traps"><br>Traps</label>
+                        <input type="number" id="potd200traps" name="potd200traps" step="1" min="0" value="0" onchange="SC.Update('post|currentTrapsTriggered|potd100traps', this.value)">
+                    </div>
+                    <div class="StatInput">
+                        <label for="potd200chests"><br>Chests</label>
+                        <input type="number" id="potd200chests" name="potd200chests" step="1" min="0" value="0" onchange="SC.Update('post|currentChestCount|potd100chests', this.value)">
+                    </div>
+                    <div class="StatInput">
+                        <label for="potd200enchant"><br>Enchantments</label>
+                        <input type="number" id="potd200enchant" name="potd200enchant" step="1" min="0" value="0" onchange="SC.Update('post|currentEnchantmentCount|potd100enchant', this.value)">
+                    </div>
+                    <div class="StatInput">
+                        <label for="potd200speed"><br>Speed Runs</label>
+                        <input type="number" id="potd200speed" name="potd200speed" step="1" min="0" max="10" value="0" onchange="SC.Update('post|currentSpeedRunBonusCount|potd100speed', this.value)">
+                    </div>
+                    <div class="StatInput">
+                        <label for="potd200deaths"><br>Deaths</label>
+                        <input type="number" id="potd200deaths" name="potd200deaths" step="1" min="0" value="0" onchange="SC.Update('post|currentRezCount|potd100deaths', this.value)">
+                    </div>
+                </div>
+                <header>
+                    <hr width="25%">
+                    <h2 class="ScoreLabel">Score:</h2>
+                    <h2 id="potd200score">9,999,999</h2>
+                </header>
+            </div>
+        </div> 
+        <div>
+            <footer>
+            <img src="/img/twitch_image.png" style="width:18px;height:18;">
+            <a href="https://www.twitch.tv/iamlokken" target="_blank">twitch.tv/iamlokken</a>
+            |   
+            <img src="/img/kofi_image.png" style="width:23px;height:18;">
+            <a href="https://ko-fi.com/lokken" target="_blank">ko-fi.com/lokken</a>
+            </footer>
+        </div>       
+    </body>
+</html>

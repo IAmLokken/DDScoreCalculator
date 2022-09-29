@@ -1,0 +1,89 @@
+:lang(en), :lang(fr), :lang(de){
+    font-family: "Franklin Gothic Medium";
+    font-size: 12px;
+    box-sizing: border-box;
+}
+:lang(ja){
+    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", "ＭＳ ゴシック" , "MS Gothic", "Noto Sans CJK JP", TakaoPGothic, sans-serif;
+    font-size: 10px;
+    line-height: 175%;
+    box-sizing: border-box;}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    background-color: rgb(29, 29, 29);
+    padding: 5px;
+    color:ivory;
+}
+
+#hoh30, #hoh100, #potd100, #potd200, #frame{
+    border: 3px ridge rgb(185, 185, 185);
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.8) inset;
+    background-color: rgba(40, 40, 150, 0.5);
+    padding-left: 15px;
+    padding-right: 15px;
+    width: fit-content;
+       
+}
+#hoh30, #hoh100, #potd100, #potd200, #frame{
+    margin: auto;   
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.inlineblock, input, label{
+    display:block;
+    flex-direction:column;
+    padding: 8px;
+}
+input{
+    margin: 0 auto;
+    width: 100px;
+}
+.StatInput{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+#DeepDungeon, #FloorSelection{
+    padding: 4px 4px;
+    margin: 5px;
+}
+
+.center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-group {
+    text-align: center;
+}
+.dropdown{
+    width:175px;
+}
+.hide {
+    display:none !important;
+}
+
+h1, h2 {
+    text-align: center;
+}
+.ScoreLabel{
+    color: rgb(247, 160, 0)
+}
+
+footer {
+    text-align: center;
+    padding: 3px;
+    background-color: rgb(40, 40, 50);
+    color: white;
+    vertical-align: bottom;    
+}
+a{
+    color:darkgray;
+}
